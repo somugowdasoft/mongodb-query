@@ -1,3 +1,6 @@
+**View the Code Proof Results Here To view the code screenshots and database screenshots, simply download the mongodb.rtf file.**
+
+
 # Zen Class Program Database
 
 This repository contains the design and implementation of a MongoDB database for the Zen class program. The database includes various collections related to students, coding tasks, attendance, topics taught, tasks assigned, company drives, and mentors.
@@ -21,10 +24,11 @@ This repository contains the design and implementation of a MongoDB database for
    db.topics.find({ taught_date: { $gte: "2020-10-01", $lte: "2020-10-31" } });
    db.tasks.find({ submission_date: { $gte: "2020-10-01", $lte: "2020-10-31" } });
    
-2 Find all company drives between October 15, 2020, and October 31, 2020:
+2. **Find all company drives between October 15, 2020, and October 31, 2020**:
+   
 db.company_drives.find({ drive_date: { $gte: "2020-10-15", $lte: "2020-10-31" } });
 
-3 Find all company drives and students who attended the placement:
+3. **Find all company drives and students who attended the placement**:
 db.company_drives.aggregate([
   {
     $lookup: {
@@ -43,13 +47,13 @@ db.company_drives.aggregate([
   }
 ]);
 
-4 Find the number of problems solved by each user in CodeKata:
+4. **Find the number of problems solved by each user in CodeKata**:
 db.users.find({}, { name: 1, codekata_problems_solved: 1 });
 
-5  Find all mentors with more than 15 mentees:
+5. **Find all mentors with more than 15 mentees**:
 db.mentors.find({ mentee_count: { $gt: 15 } });
 
-6 Count the number of users who are absent and did not submit tasks between October 15, 2020, and October 31, 2020:
+6. **Count the number of users who are absent and did not submit tasks between October 15, 2020, and October 31, 2020**:
 db.users.aggregate([
   {
     $lookup: {
@@ -78,4 +82,5 @@ db.users.aggregate([
     $count: "absent_and_task_not_submitted"
   }
 ]);
+
 
