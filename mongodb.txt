@@ -1,0 +1,77 @@
+//create mongoDB with name zen_class
+
+use zen_class
+
+//Users Collection
+db.users.insertMany([
+  {
+    _id: 1,
+    name: "Somu Gowda",
+    email: "somugowda@gmail.com",
+    codekata_problems_solved: 50,
+    mentor_id: 101,
+    attended_days: ["2020-10-20", "2020-10-22"],
+    tasks_submitted: [201],
+    placement_drives_attended: [301]
+  },
+  {
+    _id: 2,
+    name: "Bhim",
+    email: "bhim@gmail.com",
+    codekata_problems_solved: 75,
+    mentor_id: 102,
+    attended_days: ["2020-10-18"],
+    tasks_submitted: [202],
+    placement_drives_attended: [302]
+  }
+]);
+
+
+// codekata Collection
+db.codekata.insertMany([
+  { _id: 201, user_id: 1, problems_solved: 50, submission_date: "2020-10-10" },
+  { _id: 202, user_id: 2, problems_solved: 75, submission_date: "2020-10-15" }
+]);
+
+
+// attendance Collection
+db.attendance.insertMany([
+  { _id: 301, user_id: 1, date: "2020-10-20", status: "Present" },
+  { _id: 302, user_id: 2, date: "2020-10-18", status: "Absent" }
+]);
+
+// topics Collection
+db.topics.insertMany([
+  { _id: 401, topic_name: "JavaScript", taught_date: "2020-10-05" },
+  { _id: 402, topic_name: "MongoDB", taught_date: "2020-10-12" }
+]);
+
+
+// tasks Collection
+db.tasks.insertMany([
+  { _id: 501, task_name: "JS Task", submission_date: "2020-10-10" },
+  { _id: 502, task_name: "MongoDB Task", submission_date: "2020-10-15" }
+]);
+
+// company_drives Collection
+db.company_drives.insertMany([
+  {
+    _id: 301,
+    company_name: "Google",
+    drive_date: "2020-10-16",
+    attended_users: [1]
+  },
+  {
+    _id: 302,
+    company_name: "Amazon",
+    drive_date: "2020-10-20",
+    attended_users: [2]
+  }
+]);
+
+// mentors Collection
+db.mentors.insertMany([
+  { _id: 101, mentor_name: "John Mentor", mentee_count: 20 },
+  { _id: 102, mentor_name: "Jane Mentor", mentee_count: 12 }
+]);
+
