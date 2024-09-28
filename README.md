@@ -26,10 +26,10 @@ This repository contains the design and implementation of a MongoDB database for
    
 2. **Find all company drives between October 15, 2020, and October 31, 2020**:
    
-db.company_drives.find({ drive_date: { $gte: "2020-10-15", $lte: "2020-10-31" } });
+``` db.company_drives.find({ drive_date: { $gte: "2020-10-15", $lte: "2020-10-31" } });
 
 3. **Find all company drives and students who attended the placement**:
-db.company_drives.aggregate([
+``` db.company_drives.aggregate([
   {
     $lookup: {
       from: "users",
@@ -48,13 +48,13 @@ db.company_drives.aggregate([
 ]);
 
 4. **Find the number of problems solved by each user in CodeKata**:
-db.users.find({}, { name: 1, codekata_problems_solved: 1 });
+```db.users.find({}, { name: 1, codekata_problems_solved: 1 });
 
 5. **Find all mentors with more than 15 mentees**:
-db.mentors.find({ mentee_count: { $gt: 15 } });
+```db.mentors.find({ mentee_count: { $gt: 15 } });
 
 6. **Count the number of users who are absent and did not submit tasks between October 15, 2020, and October 31, 2020**:
-db.users.aggregate([
+```db.users.aggregate([
   {
     $lookup: {
       from: "attendance",
