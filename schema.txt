@@ -1,0 +1,71 @@
+//potential schema design for each collection:
+
+// 1. Users Collection:
+
+{
+  "_id": ObjectId,
+  "name": String,
+  "email": String,
+  "codekata_problems_solved": Number,
+  "mentor_id": ObjectId,
+  "attended_days": [Date],
+  "tasks_submitted": [ObjectId], // References `tasks._id`
+  "placement_drives_attended": [ObjectId] // References `company_drives._id`
+}
+
+
+// 2. Codekata Collection:
+
+{
+  "_id": ObjectId,
+  "problems_solved": Number,
+  "user_id": ObjectId, // References `users._id`
+  "submission_date": Date
+}
+
+
+//3. Attendance Collection:
+
+{
+  "_id": ObjectId,
+  "user_id": ObjectId, // References `users._id`
+  "date": Date,
+  "status": String // Present or Absent
+}
+
+
+//4. Topics Collection:
+
+{
+  "_id": ObjectId,
+  "topic_name": String,
+  "taught_date": Date
+}
+
+
+//5. Tasks Collection:
+
+{
+  "_id": ObjectId,
+  "task_name": String,
+  "submission_date": Date,
+}
+
+
+//6. Company Drives Collection:
+
+{
+  "_id": ObjectId,
+  "company_name": String,
+  "drive_date": Date,
+  "attended_users": [ObjectId] // References `users._id`
+}
+
+
+//7. Mentors Collection:
+
+{
+  "_id": ObjectId,
+  "mentor_name": String,
+  "mentee_count": Number
+}
